@@ -10,7 +10,7 @@ class Loading extends StatefulWidget {
 }
 
 class _LoadingState extends State<Loading> {
-  late String city = "Indore";
+  late String city = "Mumbai";
   late String temp;
   late String humidity;
   late String airSpeed;
@@ -19,7 +19,7 @@ class _LoadingState extends State<Loading> {
   late String icon;
 
   void startApp(String city) async {
-    worker instance = worker(location: city);
+    Worker instance = Worker(location: city);
     await instance.getData();
 
     temp = instance.temp;
@@ -29,23 +29,16 @@ class _LoadingState extends State<Loading> {
     main = instance.main;
     icon = instance.icon;
     Future.delayed(Duration(seconds: 2), () {
-      Navigator.pushReplacementNamed(context, '/Home', arguments: {
-        "temp_value": temp,
-        "hum_value": humidity,
-        "airSpeed_value": airSpeed,
-        "des_value": description,
-        "main_value": main,
-        "icon_value": icon,
-        "city_value": city,
-      });
+       Navigator.pushReplacementNamed(context, '/Home', arguments: {
+          "temp_value": temp,
+          "hum_value": humidity,
+          "airSpeed_value": airSpeed,
+          "des_value": description,
+          "main_value": main,
+          "icon_value": icon,
+          "city_value": city,
+        });
     });
-  }
-
-  @override
-  void initState() {
-    // TODO: implement initState
-
-    super.initState();
   }
 
   @override

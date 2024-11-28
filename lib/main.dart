@@ -5,9 +5,9 @@ import 'package:weather/Activity/loading.dart';
 void main() {
   runApp(MaterialApp(
     routes: {
-      "/": (context) => Loading(),
+      "/": (context) => const Loading(),
       "/Home": (context) => Home(),
-      "/loading": (context) => Loading(),
+      "/loading": (context) => const Loading(),
     },
   ));
 }

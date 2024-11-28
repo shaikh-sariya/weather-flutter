@@ -1,12 +1,12 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-class worker {
+class Worker {
   String location;
 
   //Constructor
-  worker({required this.location}) {
-    location = this.location;
+  Worker({required this.location}) {
+    location = location;
   }
 
   late String temp;
@@ -23,7 +23,6 @@ class worker {
           "https://api.openweathermap.org/data/2.5/weather?q=$location&appid=e756acaa3c3fb9694ccaa837b0e72aa2"));
       Map data = jsonDecode(response.body);
 
-      print(data);
       //Getting temp,Humidity,
       var mainData = data['main'];
       String getHumidity = mainData['humidity'].toString();
@@ -48,7 +47,6 @@ class worker {
       main = getMainDes;
       icon = weatherMainData["icon"].toString();
     } catch (e) {
-      print(e);
       temp = "NA";
       humidity = "NA";
       airSpeed = "NA";
